@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festiva | Détails de la salle</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 420px;
+            gap: 4rem;
+            margin-top: 60px;
+            padding-bottom: 120px;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 550px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 3rem;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .venue-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, white, var(--primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .venue-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .venue-section {
+            margin-bottom: 3rem;
+        }
+
+        .venue-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .venue-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            list-style: none;
+        }
+
+        .features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .features li svg {
+            color: var(--secondary);
+        }
+
+        /* Sticky Booking Card */
+        .booking-card {
+            position: sticky;
+            top: 130px;
+            background: var(--surface);
+            backdrop-filter: var(--glass);
+            -webkit-backdrop-filter: var(--glass);
+            padding: 3.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            height: fit-content;
+        }
+
+        .price-header {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 2.5rem;
+            color: var(--secondary);
+            text-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
+        }
+
+        .booking-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-form label {
+            display: block;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .booking-form input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .booking-form input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-book {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent-magenta));
+            color: white;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: none;
+            box-shadow: 0 0 20px var(--primary-glow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-book:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+
+        @media (max-width: 992px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-card {
+                position: static;
+            }
+        }
+
+        .login-cta {
+            text-align: center;
+            padding: 1rem 0;
+        }
+
+        .login-cta p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .btn-cta-login {
+            display: block;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-cta-login:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.1);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .btn-cta-register {
+            display: block;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .btn-cta-register:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-particles"></div>
+    <nav class="navbar"></nav>
+
+    <main class="container">
+        <div class="details-grid">
+            <div class="content">
+                <div class="main-image">
+                    <img id="venue-image" src="" alt="">
+                </div>
+                <h1 id="venue-title" class="venue-title">Chargement...</h1>
+                <div id="venue-location" class="venue-location"></div>
+
+                <div class="venue-section">
+                    <h3>Description</h3>
+                    <p id="venue-description"></p>
+                </div>
+
+                <div class="venue-section">
+                    <h3>Équipements inclus</h3>
+                    <ul class="features">
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Sono Haute Fidélité</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Parking Privé</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Cuisine Équipée</li>
+                        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg> Climatisation / Chauffage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside>
+                <div class="booking-card">
+                    <div class="price-header"><span id="venue-price">0</span>€ <span>/ jour</span></div>
+                    
+                    <div id="booking-container">
+                        <form id="booking-form" class="booking-form" style="display: none;"
+                            onsubmit="event.preventDefault(); alert('Réservation envoyée !'); window.location.href='dashboard.html'">
+                            <div class="form-group">
+                                <label>Date souhaitée</label>
+                                <input type="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nombre d'invités</label>
+                                <input type="number" placeholder="Ex: 50" required>
+                            </div>
+                            <button type="submit" class="btn-book">Réserver maintenant</button>
+                        </form>
+
+                        <div id="login-cta" class="login-cta" style="display: none;">
+                            <p>Vous devez être connecté pour réserver cette salle d'exception.</p>
+                            <div class="cta-buttons">
+                                <a href="login.html" class="btn-cta-login">Se connecter</a>
+                                <a href="register.html" class="btn-cta-register">Créer un compte</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get('id'));
+            const venue = venues.find(v => v.id === id);
+
+            if (venue) {
+                document.getElementById('venue-title').innerText = venue.name;
+                document.getElementById('venue-location').innerText = '📍 ' + venue.location;
+                document.getElementById('venue-description').innerText = venue.description;
+                document.getElementById('venue-price').innerText = venue.price;
+                document.getElementById('venue-image').src = venue.image;
+                document.body.title = "Festiva | " + venue.name;
+            }
+
+            // Authentication guard for reservation
+            const user = getUser();
+            const bookingForm = document.getElementById('booking-form');
+            const loginCta = document.getElementById('login-cta');
+
+            if (user) {
+                bookingForm.style.display = 'block';
+                loginCta.style.display = 'none';
+            } else {
+                bookingForm.style.display = 'none';
+                loginCta.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>

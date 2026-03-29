@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festiva | Dashboard Propriétaire</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        .owner-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 80px 0 40px;
+        }
+
+        .owner-header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, white, var(--primary));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            backdrop-filter: var(--glass);
+            -webkit-backdrop-filter: var(--glass);
+            padding: 2.5rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+            box-shadow: 0 0 30px rgba(0, 209, 255, 0.2);
+        }
+
+        .stat-card .value {
+            display: block;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--secondary);
+            text-shadow: 0 0 15px rgba(0, 209, 255, 0.4);
+        }
+
+        .stat-card .label {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .listings-section {
+            background: var(--surface);
+            backdrop-filter: var(--glass);
+            -webkit-backdrop-filter: var(--glass);
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            padding: 3rem;
+            margin-bottom: 120px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .listing-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+
+        .listing-item:last-child {
+            border-bottom: none;
+        }
+
+        .listing-item:hover {
+            background: var(--background);
+        }
+
+        .listing-item img {
+            width: 100px;
+            height: 75px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .listing-info {
+            flex: 1;
+        }
+
+        .listing-info h3 {
+            font-size: 1.1rem;
+            font-weight: 800;
+        }
+
+        .listing-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .listing-status {
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            background: #DCFCE7;
+            color: #166534;
+        }
+
+        /* Modal Simple */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--background);
+            backdrop-filter: var(--glass);
+            padding: 4rem;
+            border-radius: 32px;
+            width: 100%;
+            max-width: 650px;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.8);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-grid"></div>
+    <div class="bg-particles"></div>
+    <nav class="navbar"></nav>
+
+    <main class="container">
+        <header class="owner-header">
+            <div>
+                <h1>Dashboard Propriétaire</h1>
+                <p>Gérez vos salles et vos revenus en un coup d'œil.</p>
+            </div>
+            <button class="btn-add-venue" onclick="openModal()">
+                <span class="icon-plus">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                </span>
+                Ajouter une salle
+            </button>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <span class="value">3</span>
+                <span class="label">Salles Actives</span>
+            </div>
+            <div class="stat-card">
+                <span class="value">12</span>
+                <span class="label">Réservations ce mois</span>
+            </div>
+            <div class="stat-card">
+                <span class="value">8,450€</span>
+                <span class="label">Revenus totaux</span>
+            </div>
+        </div>
+
+        <section class="listings-section">
+            <div class="section-header">
+                <h2>Mes Annonces</h2>
+            </div>
+            <div class="listings-list">
+                <div class="listing-item">
+                    <img src="https://images.unsplash.com/photo-1544928147-79723ec7f415?auto=format&fit=crop&q=80&w=200" alt="">
+                    <div class="listing-info">
+                        <h3>Château de la Roche</h3>
+                        <p>Versailles • 1500€/jour</p>
+                    </div>
+                    <div class="listing-status">Active</div>
+                </div>
+                <div class="listing-item">
+                    <img src="assets/palais_emeraude.png" alt="">
+                    <div class="listing-info">
+                        <h3>Palais Émeraude</h3>
+                        <p>Marrakech • 2500€/jour</p>
+                    </div>
+                    <div class="listing-status">Active</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </span>
+            <h2 style="margin-bottom: 2rem;">Ajouter une nouvelle salle</h2>
+            <form onsubmit="event.preventDefault(); closeModal(); alert('Salle ajoutée avec succès ! (Simulation)')">
+                <div class="form-group">
+                    <label>Nom de la salle</label>
+                    <input type="text" placeholder="Ma superbe salle" required>
+                </div>
+                <div class="form-group">
+                    <label>Localisation</label>
+                    <input type="text" placeholder="Paris, FR" required>
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div class="form-group">
+                        <label>Prix par jour (€)</label>
+                        <input type="number" placeholder="500" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Capacité (pers.)</label>
+                        <input type="number" placeholder="100" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-add-venue" style="width: 100%; margin-top: 2rem; justify-content: center;">
+                    <span class="icon-plus">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                    Publier l'annonce
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script>
+        function openModal() {
+            document.getElementById('addModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('addModal').style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>
