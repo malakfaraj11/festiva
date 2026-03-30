@@ -82,4 +82,4 @@ Festiva se démarque par une utilisation poussée du design web créatif :
 
 ---
 
-*Développé avec passion pour simplifier l'organisation de vos plus beaux événements.*
+*Développé avec passion par lina pour simplifier l'organisation de vos plus beaux événements.*
